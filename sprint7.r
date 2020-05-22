@@ -26,3 +26,7 @@ case.data[is.na(case.data$balance),"balance"]<- median(case.data$balance,na.rm =
 case.data$contacted[case.data$contacted==""]<-NA
 levels(case.data$contacted) <- c(levels(case.data$contacted), -1)
 case.data[is.na(case.data$contacted),"contacted"]<- -1
+
+is.na(case.data$loanvalue) <- !case.data$loanvalue
+case.data[is.na(case.data$loanvalue),"deposit"]<- median(case.data$loanvalue,na.rm = T)
+hist(case.data$loanvalue)
